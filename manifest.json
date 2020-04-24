@@ -14,7 +14,6 @@
         "default_icon": "red-logo-128.png"
     },
     "background": {
-        "scripts": ["background.js"],
-        "persistent": false
+        "scripts": ["background.js"]
     }
   }
