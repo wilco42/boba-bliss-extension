@@ -3,6 +3,10 @@ let bobaBlissInfoUrl = 'https://boba-bliss.square.site/app/store/api/v5/editor/u
     notificationSound = new Audio('notification.ogg'),
     notified = false;
 
+window.browser = (function () {
+    return window.msBrowser || window.browser || window.chrome;
+})();
+
 function checkBobaBliss() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', bobaBlissInfoUrl + '?time=' + new Date().getTime(), true);
@@ -15,21 +19,21 @@ function checkBobaBliss() {
             if (acceptingOrders) {
                 // let's only notify the user once if the status changes
                 if (!notified) {
-                    chrome.notifications.create('BOBA-' + new Date().getTime(), {
+                    browser.notifications.create('BOBA-' + new Date().getTime(), {
                         type: 'basic',
                         iconUrl: 'green-logo-128.png',
                         title: 'Boba Bliss Store Notifier',
                         message: 'Boba Bliss is now accepting orders'
                     });
                     notificationSound.play();
-                    chrome.browserAction.setIcon({path: 'green-logo-128.png'});
+                    browser.browserAction.setIcon({path: 'green-logo-128.png'});
                     notified = true;
                 }
             } else {
                 // let's only update the logo if the status changed from
                 // accepting orders to not
                 if (notified) {
-                    chrome.browserAction.setIcon({path: 'red-logo-128.png'});
+                    browser.browserAction.setIcon({path: 'red-logo-128.png'});
                     notified = false;
                 }
             }
@@ -39,7 +43,7 @@ function checkBobaBliss() {
 checkBobaBliss();
 let timer = setInterval(checkBobaBliss, interval);
 
-chrome.browserAction.onClicked.addListener(function(tab) {
+browser.browserAction.onClicked.addListener(function(tab) {
     let bobaBlissStoreUrl = 'https://boba-bliss.square.site/';
-    chrome.tabs.create({url: bobaBlissStoreUrl});
+    browser.tabs.create({url: bobaBlissStoreUrl});
 });
