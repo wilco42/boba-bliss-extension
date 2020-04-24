@@ -15,7 +15,7 @@ function checkBobaBliss() {
             if (acceptingOrders) {
                 // let's only notify the user once if the status changes
                 if (!notified) {
-                    chrome.notifications.create('BOBA', {
+                    chrome.notifications.create('BOBA-' + new Date().getTime(), {
                         type: 'basic',
                         iconUrl: 'green-logo-128.png',
                         title: 'Boba Bliss Store Notifier',
