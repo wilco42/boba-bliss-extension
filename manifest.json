@@ -1,0 +1,21 @@
+{
+    "manifest_version": 2,
+    "name": "Boba Bliss Store Notifier",
+    "description": "Gets the status of the Boba Bliss Store",
+    "permissions": [
+        "https://boba-bliss.square.site/",
+        "https://perennialbeer.square.site/",
+        "notifications"
+    ],
+    "version": "0.1",
+    "icons": {
+        "128": "red-logo-128.png"
+    },
+    "browser_action": {
+        "default_icon": "red-logo-128.png"
+    },
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    }
+  }
