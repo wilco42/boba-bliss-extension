@@ -6,7 +6,7 @@ chrome.runtime.onInstalled.addListener(function() {
 
     function checkBobaBliss() {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', bobaBlissInfoUrl, true);
+        xhr.open('GET', bobaBlissInfoUrl + '?time=' + new Date().getTime(), true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send();
         xhr.onreadystatechange = function(data) {
@@ -37,6 +37,6 @@ chrome.runtime.onInstalled.addListener(function() {
             }
         }
     }
-
+    checkBobaBliss();
     let timer = setInterval(checkBobaBliss, interval);
 });
