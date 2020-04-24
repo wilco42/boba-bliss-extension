@@ -22,14 +22,14 @@ function checkBobaBliss() {
                         message: 'Boba Bliss is now accepting orders'
                     });
                     notificationSound.play();
-                    chrome.browserAction.setIcon({path: "green-logo-128.png"});
+                    chrome.browserAction.setIcon({path: 'green-logo-128.png'});
                     notified = true;
                 }
             } else {
                 // let's only update the logo if the status changed from
                 // accepting orders to not
                 if (notified) {
-                    chrome.browserAction.setIcon({path: "red-logo-128.png"});
+                    chrome.browserAction.setIcon({path: 'red-logo-128.png'});
                     notified = false;
                 }
             }
